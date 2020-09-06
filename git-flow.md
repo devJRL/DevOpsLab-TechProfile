@@ -1,5 +1,16 @@
 # Git Flow Command
 
+## [설정](https://github.com/petervanderdoes/gitflow-avh/wiki/Reference:-git-flow-config#git-flow-config-set---update-the-git-flow-configuration)
+
+```bash
+git flow config set develop develop/
+git flow config set feature feature/
+git flow config set hotfix  hotfix/
+git flow config set release release/
+git flow config set support support/
+git flow config set versiontagprefix tag/
+```
+
 ## 규칙
 
 1. 각 [프로젝트](https://github.com/SP-ON-GE/DevOpsLab-TechProfile/projects)의 `To do tickets` 컬럼에서 티켓을 생성한다. 이 티켓의 이름은 향후 개발에서 사용되므로 영문으로 작성한다.
