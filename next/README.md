@@ -1,6 +1,8 @@
 # Server Side Rendering (SSR) on Next.js
 
-## Dependency
+## Major Dependency
+
+- [Typescript](https://nextjs.org/learn/excel/typescript/nextjs-types)
 
 ## History
 
@@ -19,3 +21,26 @@
     yarn start
       # ready - started server on http://localhost:3000
     ```
+
+2. [Add Typescript](https://medium.com/@selvaganesh93/setup-next-js-with-typescript-integration-dece94e43cf5)
+
+  ```bash
+  yarn add @zeit/next-typescript @types/next @types/react @zeit/next-typescript @types/next @types/react
+  ```
+  
+  ```javascript
+  // in next.config.js
+  const withTypescript = require('@zeit/next-typescript')
+  module.exports = withTypescript({
+    webpack(config, options) {
+      return config
+    }
+  })
+  ```
+  
+  ```json
+  // in .babelrc
+  {
+  "presets": ["next/babel", "@zeit/next-typescript/babel"]
+  }
+  ```
