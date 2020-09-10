@@ -1,10 +1,44 @@
+@import "./_declare_colors.scss";
+
 /* FONTS */
 $Font-HOME: "/static/fonts";
 
+/*
+ * Ubuntu
+ */
 $Font-Ubuntu: "Ubuntu";
-$Font-Ubuntu-url: $Font-HOME"/google-ubuntu/Ubuntu-Regular.ttf";
+$Font-Ubuntu-url: $Font-HOME+"/google-ubuntu/Ubuntu-Regular.ttf";
 $Font-Ubuntu-type: "ttf";
 
+@font-face {
+  font-family: $Font-Ubuntu;
+  src: url($Font-Ubuntu-url) format($Font-Ubuntu-type);
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@mixin Font-Ubuntu {
+  font-family: Ubuntu, sans-serif;
+  color: $Color-M;
+}
+
+/*
+ * Suez One
+ */
 $Font-SuezOne: "Suez One";
-$Font-SuezOne-url: $Font-HOME"/google-suez-one/SuezOne-Regular.ttf";
+$Font-SuezOne-url: $Font-HOME+"/google-suez-one/SuezOne-Regular.ttf";
 $Font-SuezOne-type: "ttf";
+
+@font-face {
+  font-family: $Font-SuezOne;
+  src: local(SuezOne-Regular), url($Font-SuezOne-url) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@mixin Font-SuezOne {
+  font-family: $Font-SuezOne, serif;
+  color: $Color-M;
+}

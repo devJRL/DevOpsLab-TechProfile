@@ -1,0 +1,27 @@
+@import "../../public/_declare_fonts.scss";
+@import "../../public/_declare_colors.scss";
+
+.title {
+  display: inline;
+  text-align: center;
+  width: 400px;
+
+  &__main {
+    padding: 0.5rem 0;
+    font-size: 5rem;
+    @include Font-SuezOne;
+  }
+
+  &__bar {
+    height: 3px;
+    background-color: $Color-M;
+  }
+
+  &__sub {
+    padding: 0.5rem 0;
+    opacity: 0.5;
+    font-size: 1.88rem;
+    @include Font-Ubuntu;
+    letter-spacing: 0.9px;
+  }
+}
