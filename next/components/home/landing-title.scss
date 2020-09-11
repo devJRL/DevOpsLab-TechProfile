@@ -1,12 +1,11 @@
 @import "../../public/_declare_fonts.scss";
 @import "../../public/_declare_colors.scss";
 
-.title {
+.landing-title {
   display: inline;
   text-align: center;
-  width: 400px;
 
-  &__main {
+  &__big {
     padding: 0.5rem 0;
     font-size: 5rem;
     @include Font-SuezOne;

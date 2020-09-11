@@ -1,10 +1,13 @@
 // REF | https://github.com/vercel/next-learn-starter/blob/master/typescript-final/pages/index.tsx
 import "@/public/_global.scss";
 
-import Title from "@/components/home/title";
+import Layout from "@/components/layout";
+import LandingTitle from "@/components/home/landing-title";
 
-const Home = () => {
-  return <Title />;
+const Index = () => {
+  return (
+    <Layout title="SPONGE Tech Profiel 2021" landingArea={<LandingTitle />} />
+  );
 };
 
-export default Home;
+export default Index;
