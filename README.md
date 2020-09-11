@@ -13,7 +13,7 @@
 ### Front-end
 
 - Modern UX Design with `Zeplin` & `Figma`
-- Modern SSR on `Next.js` with `Typescript` & `SCSS`
+- Modern SSR on `Next.js` with `Typescript` & [`SCSS`](https://www.codingfactory.net/category/sass)
 
 ### CI/CD
 
