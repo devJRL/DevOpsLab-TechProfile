@@ -1,0 +1,18 @@
+.contact {
+  height: 100%;
+
+  margin: 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    margin: 0 1rem;
+  }
+
+  &__item>a>img {
+    opacity: 0.4;
+    height: 1.5rem;
+  }
+}

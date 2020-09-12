@@ -25,7 +25,7 @@
 2. [Add Typescript](https://medium.com/@selvaganesh93/setup-next-js-with-typescript-integration-dece94e43cf5)
 
   ```bash
-  yarn add @zeit/next-typescript @types/next @types/react @zeit/next-typescript @types/next @types/react
+  yarn add @zeit/next-typescript @types/next @types/react
   ```
   
   ```javascript

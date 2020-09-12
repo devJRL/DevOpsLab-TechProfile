@@ -1,0 +1,31 @@
+@import "../../../../public/declare_fonts";
+@import "../common/settings.scss";
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-wrapper {
+  @include padding-desktop;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &>p {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin: 0.25rem 0;
+  }
+
+  &__empty {
+    height: 100%;
+  }
+}
