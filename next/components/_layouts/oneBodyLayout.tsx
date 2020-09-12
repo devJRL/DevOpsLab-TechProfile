@@ -9,12 +9,14 @@ import Footer from "@/components/_layouts/parts/footer";
 
 type props = {
   isVisableLogo?: boolean;
+  isVisableFooter?: boolean;
   title?: string;
   oneBodyComponent?: ReactNode;
 };
 
 const OneBodyLayout = ({
   isVisableLogo,
+  isVisableFooter,
   title = "SP.ON.GE Tech Profile 2020",
   oneBodyComponent,
 }: props) => {
@@ -23,7 +25,7 @@ const OneBodyLayout = ({
       <Title title={title} />
       <Header isVisableLogo={isVisableLogo} />
       <div className="oneBodyComponent">{oneBodyComponent}</div>
-      <Footer />
+      <Footer isVisableFooter={isVisableFooter} />
     </>
   );
 };
