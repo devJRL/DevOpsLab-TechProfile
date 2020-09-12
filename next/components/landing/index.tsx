@@ -1,12 +1,15 @@
 import "./index.scss";
 import Cover from "./cover";
+import Owner from "./owner";
+import Arrows from "../arrows";
 
-const cname = "landing";
 const Landing = () => {
   return (
     <>
-      <div className={`${cname}__center`}>
+      <div className="landing">
         <Cover />
+        <Owner />
+        <Arrows.down href={"/"} as={"/"} />
       </div>
     </>
   );

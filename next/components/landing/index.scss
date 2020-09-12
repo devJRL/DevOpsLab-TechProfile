@@ -1,7 +1,9 @@
 .landing {
+  /* for cover */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  &__center {
-    padding: auto;
-  }
-
+  /* for owner & arrow */
+  position: relative;
 }
