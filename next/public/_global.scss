@@ -138,17 +138,8 @@ table {
   border-spacing: 0
 }
 
-@font-face {
-  font-family: $Font-Ubuntu, sans-serif;
-  src: url($Font-Ubuntu-url) format($Font-Ubuntu-type);
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-}
-
 :global(html) {
-  font-family: $Font-Ubuntu, sans-serif;
-  color: $Color-M;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 @import "./_declare_fonts.scss";
