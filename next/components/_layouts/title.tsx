@@ -4,7 +4,7 @@ type props = {
   title?: string;
 };
 
-const Title = ({ title = "SP.ON.GE Tech Profile 2020" }: props) => {
+const Title = ({ title = "SP.ON.GE Tech Profile 2021" }: props) => {
   return (
     <Head>
       {/* [Google Font] Ubuntu */}

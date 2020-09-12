@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 
 import "./oneBodyLayout.scss";
 
-import Title from "@/components/_layouts/parts/title";
+import Title from "@/components/_layouts/title";
 import Header from "@/components/_layouts/parts/header";
 import Footer from "@/components/_layouts/parts/footer";
 
@@ -17,7 +17,7 @@ type props = {
 const OneBodyLayout = ({
   isVisableLogo,
   isVisableFooter,
-  title = "SP.ON.GE Tech Profile 2020",
+  title,
   oneBodyComponent,
 }: props) => {
   return (
