@@ -16,13 +16,13 @@ const controlMsg = () => {
   return (
     <p>
       Version controlled in{" "}
-      <a target="_blank" href="https://vercel.com/">
+      <a target="_blank" href="https://github.com/devJRL/DevOpsLab-TechProfile">
         Github repository
       </a>{" "}
       with{" "}
       <a
         target="_blank"
-        href="https://gist.github.com/ihoneymon/a28138ee5309c73e94f9#git-flow%EC%9D%84-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%ED%95%9C-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5"
+        href="https://gist.github.com/ihoneymon/a28138ee5309c73e94f9#file-use-git-and-git-flow-adoc"
       >
         git flow
       </a>
