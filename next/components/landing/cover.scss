@@ -1,0 +1,26 @@
+@import "../../public/_declare_fonts.scss";
+@import "../../public/_declare_colors.scss";
+
+.cover {
+  display: inline;
+  text-align: center;
+
+  &__big {
+    padding: 0.5rem 0;
+    font-size: 5rem;
+    @include Font-SuezOne;
+  }
+
+  &__bar {
+    width: 25rem;
+    height: 3px;
+    background-color: $Color-M;
+  }
+
+  &__sub {
+    padding: 0.5rem 0;
+    opacity: 0.5;
+    font-size: 1.88rem;
+    letter-spacing: 0.9px;
+  }
+}

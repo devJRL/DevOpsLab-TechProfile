@@ -1,0 +1,24 @@
+@import "./_declare_colors.scss";
+
+/* FONTS */
+$Font-HOME: "/static/fonts";
+
+/*
+ * Suez One
+ */
+$Font-SuezOne: "Suez One";
+$Font-SuezOne-type: "ttf";
+$Font-SuezOne-url: $Font-HOME+"/google-suez-one/SuezOne-Regular."+$Font-SuezOne-type;
+
+@font-face {
+  font-family: $Font-SuezOne;
+  src: local(SuezOne-Regular), url($Font-SuezOne-url) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+}
+
+@mixin Font-SuezOne {
+  font-family: $Font-SuezOne, serif;
+  color: $Color-M;
+}

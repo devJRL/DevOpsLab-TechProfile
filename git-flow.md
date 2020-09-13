@@ -1,5 +1,27 @@
 # Git Flow Command
 
+## [설치](https://github.com/nvie/gitflow/wiki/Installation)
+
+```bash
+# After install 'git-flow'
+git flow init
+    # Which branch should be used for bringing forth production releases?
+    #    - develop
+    #    - master
+    # Branch name for production releases: [master] 
+
+    # Which branch should be used for integration of the "next release"?
+    #    - develop
+    # Branch name for "next release" development: [develop] 
+
+    # How to name your supporting branch prefixes?
+    # Feature branches? [feature/] 
+    # Release branches? [release/] 
+    # Hotfix branches? [hotfix/] 
+    # Support branches? [support/] 
+    # Version tag prefix? [] tag/
+```
+
 ## [설정](https://github.com/petervanderdoes/gitflow-avh/wiki/Reference:-git-flow-config#git-flow-config-set---update-the-git-flow-configuration)
 
 ```bash

@@ -1,0 +1,24 @@
+@import "../../public/_declare_colors.scss";
+
+.owner {
+  position: absolute;
+  bottom: -180%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0.6;
+
+  &__small {
+    font-size: 1.1rem;
+    color: $Color-G01-ML;
+    opacity: 0.8;
+  }
+
+  &__large {
+    font-size: 2rem;
+    color: $Color-G01-ML;
+  }
+}
