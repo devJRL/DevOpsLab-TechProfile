@@ -1,0 +1,28 @@
+.intro-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-txt {
+    font-family: 'Roboto', sans-serif;
+
+    &__lines {
+      margin-bottom: 1rem;
+    }
+
+    &__eachLine {
+      font-size: 1.25rem;
+      padding: 0.25rem 0;
+    }
+  }
+
+  &-img {
+    width: 35%;
+    min-width: 9rem;
+    max-width: 18.75rem;
+
+    &>img {
+      width: 100%;
+    }
+  }
+}

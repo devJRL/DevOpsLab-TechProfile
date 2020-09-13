@@ -1,7 +1,7 @@
 import "./index.scss";
 import Cover from "./cover";
 import Owner from "./owner";
-import Arrows from "../arrows";
+import Arrow from "../_units/arrow";
 
 const Landing = () => {
   return (
@@ -9,7 +9,7 @@ const Landing = () => {
       <div className="landing">
         <Cover />
         <Owner />
-        <Arrows.down href={"/intro"} as={"/intro"} />
+        <Arrow.down href={"/intro"} as={"/intro"} />
       </div>
     </>
   );
