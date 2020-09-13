@@ -9,7 +9,7 @@ const Landing = () => {
       <div className="landing">
         <Cover />
         <Owner />
-        <Arrows.down href={"/"} as={"/"} />
+        <Arrows.down href={"/intro"} as={"/intro"} />
       </div>
     </>
   );

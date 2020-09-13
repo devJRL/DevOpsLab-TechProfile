@@ -21,7 +21,7 @@ const contacts: contact[] = [
   },
   {
     name: "KakaoTalk",
-    thumbnail: "https://www.flaticon.com/svg/static/icons/svg/2111/2111496.svg",
+    thumbnail: "/static/images/logos/kakao-talk-logo.png",
     endpoint: "https://open.kakao.com/me/sponge_devJRL",
   },
 ];

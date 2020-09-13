@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import "./index.scss";
 import Hamburger from "./hamburger";
 
@@ -25,7 +27,11 @@ const Header = ({ isVisableLogo = true }: props) => {
   return (
     <header>
       <div className="header-wrapper">
-        <div className="logo">{makeLogo(isVisableLogo)}</div>
+        <Link href="/" as="/">
+          <a>
+            <div className="logo">{makeLogo(isVisableLogo)}</div>
+          </a>
+        </Link>
         <Hamburger />
       </div>
     </header>
