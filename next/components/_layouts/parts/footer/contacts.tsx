@@ -21,15 +21,17 @@ const contacts: contact[] = [
   },
   {
     name: "KakaoTalk",
-    thumbnail: "https://www.flaticon.com/svg/static/icons/svg/2111/2111496.svg",
+    thumbnail: "/static/images/logos/kakao-talk-logo.png",
     endpoint: "https://open.kakao.com/me/sponge_devJRL",
   },
 ];
 
 const makeContacts = () => {
-  return contacts.map((item) => {
+  let index = 0;
+  return contacts.map((item: contact) => {
+    index++;
     return (
-      <div className="contact__item">
+      <div key={index} className="contact__item">
         <a target="_blank" href={item.endpoint}>
           <img src={item.thumbnail} alt={item.name} />
         </a>

@@ -1,0 +1,20 @@
+@import "../../../public/declare_colors";
+
+.post-title {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  &__bar {
+    width: 0.5rem;
+    height: 2.5rem;
+    background-color: $Color-G01-ML;
+  }
+
+  &__txt {
+    padding: 0.5rem 1rem;
+    font-family: Suez One;
+    font-size: 1.8rem;
+    color: $Color-G01-M;
+  }
+}

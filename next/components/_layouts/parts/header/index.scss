@@ -1,5 +1,5 @@
 @import "../../../../public/declare_fonts";
-@import "../common/settings.scss";
+@import "../../../_common/settings.scss";
 
 header {
   position: fixed;
@@ -51,4 +51,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &>a {
+    text-decoration: none;
+  }
 }
