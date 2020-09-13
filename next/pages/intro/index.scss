@@ -11,15 +11,16 @@
     }
 
     &__eachLine {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       padding: 0.25rem 0;
     }
   }
 
   &-img {
-    width: 35%;
+    width: 30%;
     min-width: 9rem;
     max-width: 18.75rem;
+    margin-left: 5%;
 
     &>img {
       width: 100%;
