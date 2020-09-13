@@ -27,9 +27,11 @@ const contacts: contact[] = [
 ];
 
 const makeContacts = () => {
-  return contacts.map((item) => {
+  let index = 0;
+  return contacts.map((item: contact) => {
+    index++;
     return (
-      <div className="contact__item">
+      <div key={index} className="contact__item">
         <a target="_blank" href={item.endpoint}>
           <img src={item.thumbnail} alt={item.name} />
         </a>
