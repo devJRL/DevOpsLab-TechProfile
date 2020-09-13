@@ -1,8 +1,8 @@
 import "./postTitle.scss";
-import { title } from "./_PostSet";
+import { Title } from "./_PostSet";
 
 type props = {
-  title: title;
+  title: Title;
 };
 
 const PostTitle = ({ title = "No titled!" }: props) => {
