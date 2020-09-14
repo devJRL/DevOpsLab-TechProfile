@@ -1,9 +1,9 @@
-type level = {
+export type level = {
   point: number; // 1 ~ 5
   basis: string; // Prod-Exp
 };
 
-type spec = {
+export type spec = {
   subtitle: string; // "Used Services list"
   relations: string[]; // "Basic: CloudFront .."
 };
