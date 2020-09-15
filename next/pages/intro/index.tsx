@@ -23,16 +23,20 @@ const makeTextBlock = (texts: string[][]) => {
     <div className={`${clstxt}`}>
       {
         /* mapping lines */
-        texts.map((lines: string[]) => (
-          <ul className={`${clstxt}__lines`}>
-            {
-              /* mapping each line */
-              lines.map((eachLine: string) => (
-                <li className={`${clstxt}__eachLine`}>{eachLine}</li>
-              ))
-              /* mapping each line [end] */
-            }
-          </ul>
+        texts.map((lines: string[], index: number) => (
+          <div key={index} className={`${clstxt}__box`}>
+            <ul key={index} className={`${clstxt}__lines`}>
+              {
+                /* mapping each line */
+                lines.map((eachLine: string, _index: number) => (
+                  <li key={_index} className={`${clstxt}__eachLine`}>
+                    {eachLine}
+                  </li>
+                ))
+                /* mapping each line [end] */
+              }
+            </ul>
+          </div>
         ))
         /* mapping lines [end] */
       }
@@ -44,8 +48,8 @@ const makeImage = (images: Image[]) => {
   const clsimg = `${cls}-img`;
   return (
     <div className={`${clsimg}`}>
-      {images.map((img: Image) => (
-        <img src={img.src} alt={img.alt} />
+      {images.map((img: Image, index: number) => (
+        <img key={index} src={img.src} alt={img.alt} />
       ))}
     </div>
   );
