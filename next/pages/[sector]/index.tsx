@@ -1,6 +1,8 @@
 import { NextPage } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
+import parse from "html-react-parser"; // yarn add html-react-parser
 
-import sectors, {
+import Sector, { dummySector } from "@/scaffoldings/sectors/Sector";
+import {
   cloud,
   database,
   dev_env,
@@ -9,48 +11,52 @@ import sectors, {
 } from "@/scaffoldings/sectors";
 
 type props = {
-  sector: string;
-  sectorInfo:
-    | typeof sectors
-    | typeof cloud
-    | typeof database
-    | typeof web_front
-    | typeof dev_env
-    | typeof web_back;
+  selectedSector: string;
+  sectorArray: Sector[];
 };
 
-const SectorPage: NextPage<any> = ({ sector, sectorInfo }: props) => {
+const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
   return (
-    <h1>
-      {sector} / {sectorInfo}
-    </h1>
+    <div>
+      <p>{`selectedSector: ${selectedSector}`}</p>
+      {sectorArray.map((sector: Sector, index: number) => (
+        <p>
+          sector[{index}]: {parse(JSON.stringify(sector))}
+        </p>
+      ))}
+    </div>
   );
 };
 
 SectorPage.getInitialProps = async ({ query }) => {
-  const sector = query.sector || "dashboard";
-  let sectorInfo = {};
-  switch (sector) {
-    case "cloud-computing":
-      sectorInfo = cloud; // sector_cloud;
+  let selectedSector = query.sector || "dashboard";
+  let sectorArray: Sector[];
+  switch (selectedSector) {
+    case "cloud":
+      sectorArray = cloud.list;
       break;
     case "database":
-      sectorInfo = database; //sector_database;
+      sectorArray = database.list;
       break;
     case "dev-env":
-      sectorInfo = dev_env; // sector_dev_env;
+      sectorArray = dev_env.list;
       break;
     case "web-back":
-      sectorInfo = web_back; // sector_web_back;
+      sectorArray = web_back.list;
       break;
     case "web-front":
-      sectorInfo = web_front; // sector_web_front;
+      sectorArray = web_front.list;
       break;
     default:
-      sectorInfo = sectors;
+      // # FIXME : redirect to dashboard
+      selectedSector = "dashboard";
+      sectorArray = [dummySector, dummySector, dummySector];
   }
 
-  return { sector: sector, sectorInfo: sectorInfo };
+  return {
+    selectedSector: selectedSector,
+    sectorArray: sectorArray,
+  };
 };
 
 export default SectorPage;

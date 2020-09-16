@@ -1,3 +1,4 @@
+import Sector from "./Sector";
 import aws from "./cloud/aws";
 import gcp from "./cloud/gcp";
 import kt_gcloud from "./cloud/kt-gcloud";
@@ -9,32 +10,37 @@ import java from "./web-back/java";
 import nodejs from "./web-back/nodejs";
 import javascript from "./web-front/javascript";
 
-const cloud = {
+type SectorSet = {
+  title: string;
+  list: Sector[];
+  relatedSkills?: string;
+};
+
+const cloud: SectorSet = {
   title: "Cloud Computing",
-  aws: aws,
-  gcp: gcp,
-  kt_gcloud: kt_gcloud,
+  list: [aws, gcp, kt_gcloud],
   relatedSkills: "Bash, Zsh, Docker & compose, Kubernetes, Github Actions",
 };
 
-const database = ["Database", mysql, oracle];
+const database: SectorSet = {
+  title: "Database",
+  list: [mysql, oracle],
+};
 
-const dev_env = {
+const dev_env: SectorSet = {
   title: "Development Environment",
-  git: git,
-  svn: svn,
+  list: [git, svn],
 };
 
-const web_back = {
+const web_back: SectorSet = {
   title: "Backend Application",
-  java: java,
-  nodejs: nodejs,
+  list: [java, nodejs],
   relatedSkills: "Bash, Zsh, Docker & compose, Kubernetes, Github Actions",
 };
 
-const web_front = {
+const web_front: SectorSet = {
   title: "Front-end Application",
-  javascript: javascript,
+  list: [javascript],
   relatedSkills: "SCSS, JSON, XML, YAML",
 };
 
@@ -45,6 +51,8 @@ const sectors = {
   web_back: web_back,
   web_front: web_front,
 };
+
+export type { SectorSet };
 
 export { cloud, database, dev_env, web_back, web_front };
 

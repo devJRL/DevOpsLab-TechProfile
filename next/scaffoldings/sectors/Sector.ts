@@ -35,3 +35,23 @@ class Sector implements SectorForm {
 }
 
 export default Sector;
+
+const dummySector = new Sector(
+  "Anonymous Sector",
+  {
+    point: 1,
+    basis: "Toy-level",
+  },
+  [
+    {
+      subtitle: "This is first subtitle.",
+      relations: ["1. string message one", "2. string message two"],
+    },
+    {
+      subtitle: "This is seconde subtitle.",
+      relations: ["a) ABCD", "b) 1234"],
+    },
+  ]
+);
+
+export { dummySector };
