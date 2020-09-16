@@ -63,23 +63,21 @@ const makeLeftMetaPart = (sectorName: string, sectorLevel: level) => {
 };
 
 const makeRightDetailPart = (specs: spec[]) => {
-  const cls_detail = `${cls}-detail`;
-  const cls_detail_spec = `${cls_detail}__spec`;
+  const cls_spec = `${cls}-spec`;
+  const cls_spec_picked = `${cls_spec}__picked`;
   return (
     <td>
-      <div className={cls_detail}>
-        {specs.map(({ subtitle, relations }: spec, idx: number) => {
-          return (
-            <div key={idx} className={cls_detail_spec}>
-              <div className={`${cls_detail_spec}-title`}>{subtitle}</div>
-              <div className={`${cls_detail}-relations`}>
-                {relations.map((rel: string, i: number) => (
-                  <p key={i}>{rel}</p>
-                ))}
-              </div>
+      <div className={cls_spec}>
+        {specs.map(({ subtitle, relations }: spec, idx: number) => (
+          <div key={idx} className={cls_spec_picked}>
+            <div className={`${cls_spec_picked}-title`}>{subtitle}</div>
+            <div className={`${cls_spec_picked}-relations`}>
+              {relations.map((rel: string, i: number) => (
+                <p key={i}>{rel}</p>
+              ))}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </td>
   );
