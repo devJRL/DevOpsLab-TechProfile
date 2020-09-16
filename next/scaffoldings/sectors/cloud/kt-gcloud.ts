@@ -3,7 +3,7 @@ import Sector, { level, spec } from "../Sector";
 const sec: string = "KT G-Cloud";
 const lev: level = {
   point: 2,
-  basis: "Dev. (+ KT SaaS Security Certification)",
+  basis: "Dev.",
 };
 const specs: spec[] = [
   {

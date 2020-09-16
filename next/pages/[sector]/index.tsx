@@ -1,7 +1,14 @@
 import { NextPage } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
-import parse from "html-react-parser"; // yarn add html-react-parser
+import { ReactNode } from "react";
 
-import Sector, { dummySector } from "@/scaffoldings/sectors/Sector";
+import Layouts from "@/components/_layouts/";
+import Post from "@/components/_units/post";
+
+import Sector, {
+  level,
+  spec,
+  dummySector,
+} from "@/scaffoldings/sectors/Sector";
 import {
   cloud,
   database,
@@ -15,16 +22,79 @@ type props = {
   sectorArray: Sector[];
 };
 
+const cls = "sector";
+
+const makeContents = (sectorArray: Sector[]): ReactNode => {
+  // REF | React Table - https://react-bootstrap.github.io/components/table/
+  return (
+    <table className={cls}>
+      <tbody>
+        {sectorArray.map((sectorData: Sector, index: number) =>
+          makeSectorLow(sectorData, index)
+        )}
+      </tbody>
+    </table>
+  );
+};
+
+const makeSectorLow = (sectorData: Sector, index: number) => {
+  return (
+    <tr key={index}>
+      {makeLeftMetaPart(sectorData.sector, sectorData.level)}
+      {makeRightDetailPart(sectorData.specs)}
+    </tr>
+  );
+};
+
+const makeLeftMetaPart = (sectorName: string, sectorLevel: level) => {
+  const cls_meta = `${cls}-meta`;
+  return (
+    <td>
+      <div className={cls_meta}>
+        <div className={`${cls_meta}__target`}>{sectorName}</div>
+        <div className={`${cls_meta}__level`}>
+          <span>
+            {sectorLevel.point} | {sectorLevel.basis}
+          </span>
+        </div>
+      </div>
+    </td>
+  );
+};
+
+const makeRightDetailPart = (specs: spec[]) => {
+  const cls_detail = `${cls}-detail`;
+  const cls_detail_spec = `${cls_detail}__spec`;
+  return (
+    <td>
+      <div className={cls_detail}>
+        {specs.map(({ subtitle, relations }: spec, idx: number) => {
+          return (
+            <div key={idx} className={cls_detail_spec}>
+              <div className={`${cls_detail_spec}-title`}>{subtitle}</div>
+              <div className={`${cls_detail}-relations`}>
+                {relations.map((rel: string, i: number) => (
+                  <p key={i}>{rel}</p>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </td>
+  );
+};
+
 const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
   return (
-    <div>
-      <p>{`selectedSector: ${selectedSector}`}</p>
-      {sectorArray.map((sector: Sector, index: number) => (
-        <p>
-          sector[{index}]: {parse(JSON.stringify(sector))}
-        </p>
-      ))}
-    </div>
+    <Layouts.OneBody
+      oneBodyComponent={
+        <Post
+          title={selectedSector}
+          generatedContents={makeContents(sectorArray)}
+        />
+      }
+    />
   );
 };
 
