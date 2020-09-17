@@ -18,7 +18,7 @@ type SectorSet = {
 
 const cloud: SectorSet = {
   title: "Cloud Computing",
-  list: [aws, gcp, kt_gcloud],
+  list: [aws, kt_gcloud, gcp],
   relatedSkills: "Bash, Zsh, Docker & compose, Kubernetes, Github Actions",
 };
 

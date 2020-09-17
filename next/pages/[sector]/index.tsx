@@ -1,6 +1,7 @@
 import { NextPage } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
 import { ReactNode } from "react";
 
+import "./index.scss";
 import Layouts from "@/components/_layouts/";
 import Post from "@/components/_units/post";
 
@@ -48,13 +49,18 @@ const makeSectorLow = (sectorData: Sector, index: number) => {
 
 const makeLeftMetaPart = (sectorName: string, sectorLevel: level) => {
   const cls_meta = `${cls}-meta`;
+  const cls_level = `${cls_meta}__level`;
   return (
-    <td>
+    <td className={`${cls}-td-left`}>
       <div className={cls_meta}>
         <div className={`${cls_meta}__target`}>{sectorName}</div>
-        <div className={`${cls_meta}__level`}>
-          <span>
-            {sectorLevel.point} | {sectorLevel.basis}
+        <div className={cls_level}>
+          <span className={`${cls_level}-point`}>
+            {makeVisableLevelPoint(sectorLevel.point)}
+          </span>
+          <span className={`${cls_level}-bar`}></span>
+          <span className={`${cls_level}-basis`}>
+            {sectorLevel.basis || "Toy"}
           </span>
         </div>
       </div>
@@ -62,11 +68,19 @@ const makeLeftMetaPart = (sectorName: string, sectorLevel: level) => {
   );
 };
 
+const makeVisableLevelPoint = (point: number = 1) => {
+  if (point < 1 || point > 5) return "○○○○○";
+
+  let visablePoints: string = "";
+  for (let i = 0; i < 5; i++) visablePoints += i < point ? "●" : "○";
+  return visablePoints;
+};
+
 const makeRightDetailPart = (specs: spec[]) => {
   const cls_spec = `${cls}-spec`;
   const cls_spec_picked = `${cls_spec}__picked`;
   return (
-    <td>
+    <td className={`${cls}-td-right`}>
       <div className={cls_spec}>
         {specs.map(({ subtitle, relations }: spec, idx: number) => (
           <div key={idx} className={cls_spec_picked}>
