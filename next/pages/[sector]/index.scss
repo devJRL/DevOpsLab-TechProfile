@@ -1,0 +1,86 @@
+@import "../../public/_declare_fonts.scss";
+@import "../../public/declare_colors";
+
+.sector {
+  font-family: Roboto;
+  margin: 0;
+
+  // FOR TABLE
+  &>tr {
+    width: 100%;
+  }
+
+  &-td {
+    &-left {
+      width: 35%;
+      min-width: 200px;
+      max-width: 300px;
+      padding: 1rem 0.25rem;
+      border-bottom: 1px $Color-ML solid;
+    }
+
+    &-right {
+      width: auto;
+      padding: 0.85rem 0.25rem;
+      border-bottom: 1px $Color-ML solid;
+    }
+  }
+
+  // LEFT META PART
+  &-meta {
+    color: $Color-M;
+    padding: 0 0.5rem;
+
+    &__target {
+      font-weight: bold;
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    &__level {
+      color: $Color-SL;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: flex-start;
+
+      &-point {
+        color: $Color-S;
+        font-size: 1.1rem;
+        line-height: 1.1;
+      }
+
+      &-bar {
+        width: 1px;
+        height: 1.045rem;
+        background-color: $Color-SL;
+        opacity: 0.65;
+        margin: 0 0.5rem;
+      }
+
+      &-basis {
+        opacity: 0.65;
+        font-size: 1.05rem;
+      }
+    }
+  }
+
+  // RIGHT DETAIL PART
+  &-spec {
+
+    &__picked {
+      padding: 0.4rem 0;
+
+      &-title {
+        color: $Color-M;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.4rem;
+      }
+
+      &-relations>p {
+        color: $Color-ML;
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+}

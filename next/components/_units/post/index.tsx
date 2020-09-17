@@ -16,6 +16,7 @@ const Post = ({ title, generatedContents }: props) => {
         <PostTitle title={title} />
       </div>
       <div className="post__content-wrapper">{generatedContents}</div>
+      <div className="post__content-topper"></div>
     </div>
   );
 };
