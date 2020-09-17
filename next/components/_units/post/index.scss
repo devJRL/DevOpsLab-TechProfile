@@ -1,9 +1,9 @@
+@import "../../../public/_declare_colors";
 @import "../../_common/settings.scss";
 
 .post {
   @include padding-desktop;
 
-  width: 100%;
   position: relative;
 
   display: flex;
@@ -16,10 +16,15 @@
 
   &__content-wrapper {
     position: relative;
-    margin: 0 1.5rem;
 
     display: flex;
     justify-content: left;
     flex-direction: column;
+  }
+
+  &__content-topper {
+    position: relative;
+    height: 5rem;
+    background-color: $Color-B;
   }
 }
