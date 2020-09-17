@@ -1,10 +1,12 @@
-@import "../../../../public/declare_fonts";
+@import "../../../../public/_declare_colors";
 @import "../../../_common/settings.scss";
 
 footer {
+  z-index: 99;
   position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: $Color-B;
 
   display: flex;
   justify-content: center;
@@ -20,9 +22,9 @@ footer {
   align-items: center;
 
   &>.msg {
-    font-size: 0.75rem;
-    opacity: 0.5;
-    margin: 0.25rem 0;
+    font-size: 0.5rem;
+    opacity: 0.45;
+    margin: 0.2rem 0;
   }
 
   &__empty {

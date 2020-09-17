@@ -1,6 +1,7 @@
 import { NextPage } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
 import { ReactNode } from "react";
 
+import "@/public/_global.scss";
 import "./index.scss";
 import Layouts from "@/components/_layouts/";
 import Post from "@/components/_units/post";

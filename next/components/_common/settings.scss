@@ -1,8 +1,7 @@
 @mixin padding-desktop {
   width: 100%;
-  max-width: 900px;
-  min-width: 750px;
+  max-width: 800px;
 
   margin: 0 auto;
-  padding: 1.25rem 20%;
+  padding: 1.2rem 20%;
 }
