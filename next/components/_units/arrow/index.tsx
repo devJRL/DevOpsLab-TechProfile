@@ -5,14 +5,15 @@ import "./index.scss";
 type props = {
   href: string;
   as: string;
+  isDraggable?: boolean;
 };
 
 const makeArrowWithDirection = (
   arrowImg: string = "arrow-down.svg",
-  { href, as }: props
+  { href, as, isDraggable }: props
 ) => {
   return (
-    <div className="arrow">
+    <div className={`arrow ${isDraggable ? "fixed" : "isDraggable"}`}>
       <Link href={href} as={as}>
         <a>
           <img src={`/static/images/etc-parts/${arrowImg}`} />

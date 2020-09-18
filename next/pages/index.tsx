@@ -10,6 +10,7 @@ const Index = () => {
       isVisableLogo={false}
       isVisableFooter={false}
       oneBodyComponent={<Landing />}
+      isDraggable={false}
     />
   );
 };

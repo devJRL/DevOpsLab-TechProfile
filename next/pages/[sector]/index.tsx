@@ -107,6 +107,7 @@ const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
           generatedContents={makeContents(sectorArray)}
         />
       }
+      isDraggable={true}
     />
   );
 };

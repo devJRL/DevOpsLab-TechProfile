@@ -66,8 +66,11 @@ const IntroPage = ({ postData }: props) => {
         <Post
           title={postData.title}
           generatedContents={makeContents(postData.contents)}
+          arrow_href="/dashboard"
+          arrow_as="/dashboard"
         />
       }
+      isDraggable={false}
     />
   );
 };
