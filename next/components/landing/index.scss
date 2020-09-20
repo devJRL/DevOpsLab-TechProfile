@@ -1,9 +1,16 @@
 .landing {
+  /* by header */
+  top: -3.5rem;
+
   /* for cover */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   /* for owner & arrow */
   position: relative;
+
+  cursor: default;
+  text-decoration: none;
 }

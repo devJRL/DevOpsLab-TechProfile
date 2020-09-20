@@ -12,6 +12,7 @@ type props = {
   isVisableFooter?: boolean;
   title?: string;
   oneBodyComponent?: ReactNode;
+  isDraggable?: boolean;
 };
 
 const OneBodyLayout = ({
@@ -19,12 +20,17 @@ const OneBodyLayout = ({
   isVisableFooter,
   title,
   oneBodyComponent,
+  isDraggable,
 }: props) => {
   return (
     <>
       <Title title={title} />
       <Header isVisableLogo={isVisableLogo} />
-      <div className="oneBodyComponent">{oneBodyComponent}</div>
+      <div
+        className={`oneBodyComponent is_${isDraggable ? `draggable` : `fixed`}`}
+      >
+        {oneBodyComponent}
+      </div>
       <Footer isVisableFooter={isVisableFooter} />
     </>
   );

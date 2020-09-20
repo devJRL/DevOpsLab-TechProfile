@@ -1,6 +1,13 @@
 .arrow {
-  position: absolute;
-  bottom: -215%;
+  align-self: center;
+  padding-top: 3.5rem;
+
+  .fixed {
+    position: absolute;
+    bottom: -215%;
+  }
+
+  .isDraggable {}
 
   &>a {
     text-decoration: none;

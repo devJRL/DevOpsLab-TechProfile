@@ -8,8 +8,8 @@ const Landing = () => {
     <>
       <div className="landing">
         <Cover />
-        <Owner />
         <Arrow.down href={"/intro"} as={"/intro"} />
+        <Owner />
       </div>
     </>
   );

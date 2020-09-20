@@ -27,11 +27,15 @@ const Header = ({ isVisableLogo = true }: props) => {
   return (
     <header>
       <div className="header-wrapper">
-        <Link href="/" as="/">
-          <a>
-            <div className="logo">{makeLogo(isVisableLogo)}</div>
-          </a>
-        </Link>
+        {isVisableLogo ? (
+          <Link href="/" as="/">
+            <a>
+              <div className="logo">{makeLogo(isVisableLogo)}</div>
+            </a>
+          </Link>
+        ) : (
+          <div className="logo"></div>
+        )}
         <Hamburger />
       </div>
     </header>
