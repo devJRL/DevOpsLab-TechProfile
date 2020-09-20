@@ -6,12 +6,14 @@ import Landing from "@/components/landing";
 
 const Index = () => {
   return (
-    <Layouts.OneBody
-      isVisableLogo={false}
-      isVisableFooter={false}
-      oneBodyComponent={<Landing />}
-      isDraggable={false}
-    />
+    <a href="/intro">
+      <Layouts.OneBody
+        isVisableLogo={false}
+        isVisableFooter={false}
+        oneBodyComponent={<Landing />}
+        isDraggable={false}
+      />
+    </a>
   );
 };
 

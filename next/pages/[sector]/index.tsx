@@ -133,7 +133,7 @@ SectorPage.getInitialProps = async ({ query }) => {
       break;
     default:
       // # FIXME : redirect to dashboard
-      selectedSector = "dashboard";
+      selectedSector = "Undefined Sector";
       sectorArray = [dummySector, dummySector, dummySector];
   }
 
