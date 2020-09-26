@@ -9,7 +9,7 @@ const PostTitle = ({ title = "No titled!" }: props) => {
   return (
     <div className="post-title">
       <div className="post-title__bar"></div>
-      <span className="post-title__txt">{title}</span>
+      <span className="post-title__txt">{title}.</span>
     </div>
   );
 };

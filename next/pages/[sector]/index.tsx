@@ -138,7 +138,7 @@ SectorPage.getInitialProps = async (ctx: NextPageContext) => {
     case "web-front":
       return {
         selectedSector: "Front-end",
-        sectorArray: web_back.list,
+        sectorArray: web_front.list,
       };
 
     default:
