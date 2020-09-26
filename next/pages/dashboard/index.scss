@@ -1,6 +1,14 @@
 @import "../../public/declare_colors";
 
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .dashboard {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

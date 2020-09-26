@@ -1,57 +1,33 @@
 import { NextPage } from "next";
+import Link from "next/link";
 
 import "./index.scss";
 import Layouts from "@/components/_layouts";
 import Post from "@/components/_units/post";
 import RenderCharts from "@/components/charts";
-import Link from "next/link";
+import { tech, techLeft, techRight } from "@/scaffoldings/techs";
 
 const DashboardPage: NextPage<any> = () => {
   return (
     <Layouts.OneBody
       oneBodyComponent={
-        <Post
-          title={"Tech-Stacks"}
-          generatedContents={makeDoughnutDashboard()}
-        />
+        <Post title={"Tech-Stacks"} generatedContents={makeTechStacks()} />
       }
     />
   );
 };
 
-type tech = {
-  title: string;
-  stacks: string[];
-  link: string;
+const cls = "dashboard";
+
+const makeTechStacks = () => {
+  return (
+    <div className={`${cls}-wrapper`}>
+      {makeDoughnutDashboard()}
+      {makeSimpleInfo()}
+    </div>
+  );
 };
 
-const techLeft: tech[] = [
-  {
-    title: "Cloud Services",
-    stacks: ["AWS & GCP", "KT G-Cloud"],
-    link: "/cloud",
-  },
-  {
-    title: "Database",
-    stacks: ["MySQL", "ORACLE"],
-    link: "/database",
-  },
-];
-
-const techRight: tech[] = [
-  {
-    title: "DevOps",
-    stacks: ["Docker & Kubernetes", "Jenkins, Ansible, etc."],
-    link: "/devops",
-  },
-  {
-    title: "Full stack",
-    stacks: ["Spring/Boot", "Next.js & Express.js"],
-    link: "/full-stack",
-  },
-];
-
-const cls = "dashboard";
 const makeDoughnutDashboard = () => {
   return (
     <div className={cls}>
@@ -83,6 +59,10 @@ const makeTechPart = (techs: tech[], side: string) => {
       </a>
     </Link>
   ));
+};
+
+const makeSimpleInfo = () => {
+  return <div>This will be a simple info</div>;
 };
 
 export default DashboardPage;
