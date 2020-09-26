@@ -70,7 +70,6 @@ const IntroPage = ({ postData }: props) => {
           arrow_as="/dashboard"
         />
       }
-      isDraggable={false}
     />
   );
 };

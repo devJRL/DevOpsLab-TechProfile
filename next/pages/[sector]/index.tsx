@@ -1,4 +1,4 @@
-import { NextPage } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
+import { NextPage, NextPageContext } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
 import { ReactNode } from "react";
 
 import "@/public/_global.scss";
@@ -6,11 +6,7 @@ import "./index.scss";
 import Layouts from "@/components/_layouts/";
 import Post from "@/components/_units/post";
 
-import Sector, {
-  level,
-  spec,
-  dummySector,
-} from "@/scaffoldings/sectors/Sector";
+import Sector, { level, spec } from "@/scaffoldings/sectors/Sector";
 import {
   cloud,
   database,
@@ -107,40 +103,54 @@ const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
           generatedContents={makeContents(sectorArray)}
         />
       }
-      isDraggable={true}
+      isScrollable={true}
     />
   );
 };
 
-SectorPage.getInitialProps = async ({ query }) => {
-  let selectedSector = query.sector || "dashboard";
-  let sectorArray: Sector[];
-  switch (selectedSector) {
+SectorPage.getInitialProps = async (ctx: NextPageContext) => {
+  const { query } = ctx;
+  switch (query.sector || "dashboard") {
     case "cloud":
-      sectorArray = cloud.list;
-      break;
-    case "database":
-      sectorArray = database.list;
-      break;
-    case "dev-env":
-      sectorArray = dev_env.list;
-      break;
-    case "web-back":
-      sectorArray = web_back.list;
-      break;
-    case "web-front":
-      sectorArray = web_front.list;
-      break;
-    default:
-      // # FIXME : redirect to dashboard
-      selectedSector = "Undefined Sector";
-      sectorArray = [dummySector, dummySector, dummySector];
-  }
+      return {
+        selectedSector: "Cloud Computing",
+        sectorArray: cloud.list,
+      };
 
-  return {
-    selectedSector: selectedSector,
-    sectorArray: sectorArray,
-  };
+    case "database":
+      return {
+        selectedSector: "Database",
+        sectorArray: database.list,
+      };
+
+    case "devops":
+      return {
+        selectedSector: "Dev.Environment",
+        sectorArray: dev_env.list,
+      };
+
+    case "full-stack":
+    case "web-front":
+      return {
+        selectedSector: "Front-end",
+        sectorArray: web_front.list,
+      };
+
+    case "web-back":
+      return {
+        selectedSector: "Back-end",
+        sectorArray: web_back.list,
+      };
+
+    default:
+      // Redirection on Server Side
+      // REF | https://dev.to/justincy/client-side-and-server-side-redirection-in-next-js-3ile
+      if (ctx.res) {
+        ctx.res.writeHead(302, { Location: "/dashboard" });
+        ctx.res.end();
+      }
+      return {};
+  }
 };
 
 export default SectorPage;

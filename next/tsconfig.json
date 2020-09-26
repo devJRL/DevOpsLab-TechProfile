@@ -1,6 +1,6 @@
 {
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "components/charts/doughnut.js"],
   "compilerOptions": {
     // https://github.com/vercel/next.js/blob/master/examples/with-typescript/tsconfig.json
     "allowJs": true,
