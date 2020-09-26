@@ -5,7 +5,13 @@ import "./index.scss";
 import Layouts from "@/components/_layouts";
 import Post from "@/components/_units/post";
 import RenderCharts from "@/components/charts";
-import { tech, techLeft, techRight } from "@/scaffoldings/techs";
+import {
+  tech,
+  techLeft,
+  techRight,
+  info,
+  simpleInfo,
+} from "@/scaffoldings/techs";
 
 const DashboardPage: NextPage<any> = () => {
   return (
@@ -62,7 +68,20 @@ const makeTechPart = (techs: tech[], side: string) => {
 };
 
 const makeSimpleInfo = () => {
-  return <div>This will be a simple info</div>;
+  const subcls = "simple-info";
+  return (
+    <div className={subcls}>
+      {simpleInfo.map(({ imgUrl, title, content }: info) => (
+        <div className={`${subcls}__box`}>
+          <img src={`/static/images/icons/${imgUrl}`} />
+          <div className={`${subcls}__box-info`}>
+            <p>{title}</p>
+            <span>{content}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default DashboardPage;

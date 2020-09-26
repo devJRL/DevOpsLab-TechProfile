@@ -9,6 +9,8 @@
 
 .dashboard {
   width: 100%;
+  margin-bottom: 2rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,5 +55,47 @@
 
   &__graph {
     width: 40%;
+  }
+
+}
+
+.simple-info {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  &__box {
+    width: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    margin-left: 0.75rem;
+
+    &>img {
+      width: 2.25rem;
+      height: 2.25rem;
+      margin-right: 0.75rem;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &>p {
+        color: $Color-ML;
+        font-size: 0.7rem;
+        margin-bottom: 0.3rem;
+      }
+
+      &>span {
+        color: $Color-M;
+        font-size: 0.85rem;
+      }
+    }
+
   }
 }

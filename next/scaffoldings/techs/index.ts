@@ -30,4 +30,28 @@ const techRight: tech[] = [
   },
 ];
 
-export { techLeft, techRight };
+export type info = {
+  imgUrl: string;
+  title: string;
+  content: string;
+};
+
+const simpleInfo: info[] = [
+  {
+    imgUrl: "location.svg",
+    title: "Location",
+    content: "Seoul, South Korea",
+  },
+  {
+    imgUrl: "email.svg",
+    title: "Contact",
+    content: "dev2sponge@gmail.com",
+  },
+  {
+    imgUrl: "community.svg",
+    title: "Community",
+    content: "AWSKRUG, Jr.Dev-QnA",
+  },
+];
+
+export { techLeft, techRight, simpleInfo };
