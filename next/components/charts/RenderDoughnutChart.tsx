@@ -7,11 +7,12 @@ import { ChartArgs } from "@/interfaces/charts";
 // REF | https://itnext.io/chartjs-tutorial-with-react-nextjs-with-examples-2f514fdc130
 const RenderDoughnutChart = ({
   name,
-  labels = ["Main", "MainLight", "SubLight", "Sub"],
-  datas = [25, 25, 25, 25],
+  labels = [], // = ["Main", "MainLight", "SubLight", "Sub"],
+  datas = [1, 1, 1, 1],
   width = 100,
   height = 100,
 }: ChartArgs) => {
+  // Chart Data
   const data = {
     labels: labels,
     datasets: [
@@ -20,23 +21,30 @@ const RenderDoughnutChart = ({
         backgroundColor: [
           "#353866", // Color-G01-M
           "#AAABD3", // Color-G01-ML
-          "#E4C4DD", // Color-G01-SL
-          "#CBA6C3", // Color-G01-S
+          "#AAABD3", // Color-G01-ML
+          "#353866", // Color-G01-M
         ],
         hoverBackgroundColor: [
-          "#353866c2", // Color-G01-M
-          "#AAABD3c2", // Color-G01-ML
-          "#E4C4DDc2", // Color-G01-SL
-          "#CBA6C3c2", // Color-G01-S
+          "#35386670", // Color-G01-M
+          "#AAABD370", // Color-G01-ML
+          "#AAABD370", // Color-G01-ML
+          "#35386670", // Color-G01-M
         ],
       },
     ],
   };
 
+  // Chart Options
+  const options = {
+    legend: {
+      display: false,
+    },
+  };
+
   return (
     <>
       {name && <h2>{name}</h2>}
-      <Doughnut data={data} width={width} height={height} />
+      <Doughnut data={data} width={width} height={height} options={options} />
     </>
   );
 };

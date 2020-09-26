@@ -1,18 +1,24 @@
+@import "../../public/declare_colors";
+
 @mixin oneBodyComponent {
   width: 100%;
   overflow: auto;
-  padding-top: 3.5rem;
   display: flex;
   justify-content: center;
 }
 
+.oneBodyComponent {
+  background: $Color-G01-B;
+}
+
 .oneBodyComponent.is {
-  &_draggable {
+  &__scrollable {
     @include oneBodyComponent;
+    padding-top: 3.5rem;
     align-items: flex-start;
   }
 
-  &_fixed {
+  &__fixed {
     @include oneBodyComponent;
     height: 100vh;
     position: fixed;

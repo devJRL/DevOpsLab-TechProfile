@@ -123,22 +123,23 @@ SectorPage.getInitialProps = async (ctx: NextPageContext) => {
         sectorArray: database.list,
       };
 
-    case "dev-env":
+    case "devops":
       return {
         selectedSector: "Dev.Environment",
         sectorArray: dev_env.list,
+      };
+
+    case "full-stack":
+    case "web-front":
+      return {
+        selectedSector: "Front-end",
+        sectorArray: web_front.list,
       };
 
     case "web-back":
       return {
         selectedSector: "Back-end",
         sectorArray: web_back.list,
-      };
-
-    case "web-front":
-      return {
-        selectedSector: "Front-end",
-        sectorArray: web_front.list,
       };
 
     default:
