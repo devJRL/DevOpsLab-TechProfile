@@ -17,7 +17,12 @@ const DashboardPage: NextPage<any> = () => {
   return (
     <Layouts.OneBody
       oneBodyComponent={
-        <Post title={"Tech-Stacks"} generatedContents={makeTechStacks()} />
+        <Post
+          title={"Tech-Stacks"}
+          generatedContents={makeTechStacks()}
+          arrow_href="/devops"
+          arrow_as="/devops"
+        />
       }
     />
   );
