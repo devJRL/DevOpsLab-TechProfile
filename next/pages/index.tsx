@@ -25,7 +25,7 @@ const Index = () => {
           width: 100vw;
           height: 100vh;
           display: block;
-          position: absolute;
+          position: fixed;
           z-index: 99;
         }
       `}</style>

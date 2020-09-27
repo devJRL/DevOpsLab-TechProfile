@@ -1,21 +1,22 @@
 import Sector, { level, spec } from "../Sector";
 
-const sec: string = "Amazon Web Services";
+const sec: string = "AWS";
 const lev: level = { point: 3, basis: "Prod." };
 const specs: spec[] = [
   {
     subtitle: "Used Services list.",
     relations: [
-      "Basic: CloudFront / ELB(ALB,NLB) / EC2 + EBS + EFS / S3 / RDS",
+      "Basic: Route53 / ELB(ALB,NLB) / EC2(EBS,EFS) / S3 / RDS",
       "Ops: Code Series with CI/CD (CodeCommit ~ CodeDeploy)",
       "Monitoring: AWS CLI + CloudWatch + SNS / SQS / Lambda",
+      "Security: IAM / STS Assume Role on Java / SSL with ACM",
       "Architects: Draw.io",
     ],
   },
   {
     subtitle: "Special Note.",
     relations: [
-      "Set Monitoring Script with CloudWath Agent & Alert with SNS",
+      "Monitoring Script with CloudWath Agent & Alert with SNS",
       "Used Protocol: HTTP, SMTP, POP3, IMAP + TLS/SSL",
       "Set DNS: EIP + PTR record ( rDNS )",
       "Requested  Unlimited Throttling for SMTP",

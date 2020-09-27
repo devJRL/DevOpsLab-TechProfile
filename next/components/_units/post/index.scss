@@ -20,5 +20,9 @@
     display: flex;
     justify-content: left;
     flex-direction: column;
+
+    &.need-offset {
+      padding-bottom: 8.5rem;
+    }
   }
 }

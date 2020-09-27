@@ -6,10 +6,17 @@
   margin: 0;
 
   // FOR TABLE
-  &>tr {
+  tr {
     width: 100%;
+
+    &:last-of-type {
+      td {
+        border-bottom: 0;
+      }
+    }
   }
 
+  // FOR EACH LOW
   &-td {
     &-left {
       width: 35%;

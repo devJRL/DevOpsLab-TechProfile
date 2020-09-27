@@ -8,17 +8,30 @@ import Arrow from "@/components/_units/arrow";
 type props = {
   title: Title;
   generatedContents: ReactNode;
+  isNeedToOffset?: boolean;
   arrow_href?: string;
   arrow_as?: string;
 };
 
-const Post = ({ title, generatedContents, arrow_href, arrow_as }: props) => {
+const cls = "post";
+
+const Post = ({
+  title,
+  generatedContents,
+  isNeedToOffset = false,
+  arrow_href,
+  arrow_as,
+}: props) => {
   return (
-    <div className="post">
-      <div className="post__title-wrapper">
+    <div className={cls}>
+      <div className={`${cls}__title-wrapper`}>
         <PostTitle title={title} />
       </div>
-      <div className="post__content-wrapper">{generatedContents}</div>
+      <div
+        className={`${cls}__content-wrapper ${isNeedToOffset && "need-offset"}`}
+      >
+        {generatedContents}
+      </div>
       {arrow_href && arrow_as && <Arrow.down href={arrow_href} as={arrow_as} />}
     </div>
   );

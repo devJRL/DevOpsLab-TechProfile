@@ -10,7 +10,7 @@ import Sector, { level, spec } from "@/scaffoldings/sectors/Sector";
 import {
   cloud,
   database,
-  dev_env,
+  devops,
   web_back,
   web_front,
 } from "@/scaffoldings/sectors";
@@ -20,6 +20,24 @@ type props = {
   sectorArray: Sector[];
 };
 
+const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
+  const isNeedToOffset = sectorArray && sectorArray.length > 2;
+  return (
+    <>
+      <Layouts.OneBody
+        oneBodyComponent={
+          <Post
+            title={selectedSector}
+            generatedContents={makeContents(sectorArray)}
+            isNeedToOffset={isNeedToOffset}
+          />
+        }
+        isScrollable={true}
+      />
+    </>
+  );
+};
+
 const cls = "sector";
 
 const makeContents = (sectorArray: Sector[]): ReactNode => {
@@ -27,20 +45,14 @@ const makeContents = (sectorArray: Sector[]): ReactNode => {
   return (
     <table className={cls}>
       <tbody>
-        {sectorArray.map((sectorData: Sector, index: number) =>
-          makeSectorLow(sectorData, index)
-        )}
+        {sectorArray.map((sectorData: Sector, index: number) => (
+          <tr key={index}>
+            {makeLeftMetaPart(sectorData.sector, sectorData.level)}
+            {makeRightDetailPart(sectorData.specs)}
+          </tr>
+        ))}
       </tbody>
     </table>
-  );
-};
-
-const makeSectorLow = (sectorData: Sector, index: number) => {
-  return (
-    <tr key={index}>
-      {makeLeftMetaPart(sectorData.sector, sectorData.level)}
-      {makeRightDetailPart(sectorData.specs)}
-    </tr>
   );
 };
 
@@ -94,20 +106,6 @@ const makeRightDetailPart = (specs: spec[]) => {
   );
 };
 
-const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
-  return (
-    <Layouts.OneBody
-      oneBodyComponent={
-        <Post
-          title={selectedSector}
-          generatedContents={makeContents(sectorArray)}
-        />
-      }
-      isScrollable={true}
-    />
-  );
-};
-
 SectorPage.getInitialProps = async (ctx: NextPageContext) => {
   const { query } = ctx;
   switch (query.sector || "dashboard") {
@@ -125,17 +123,17 @@ SectorPage.getInitialProps = async (ctx: NextPageContext) => {
 
     case "devops":
       return {
-        selectedSector: "Dev.Environment",
-        sectorArray: dev_env.list,
+        selectedSector: "DevOps",
+        sectorArray: devops.list,
       };
 
-    case "full-stack":
     case "web-front":
       return {
         selectedSector: "Front-end",
         sectorArray: web_front.list,
       };
 
+    case "full-stack":
     case "web-back":
       return {
         selectedSector: "Back-end",

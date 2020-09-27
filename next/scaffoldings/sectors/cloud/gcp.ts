@@ -1,6 +1,6 @@
 import Sector, { level, spec } from "../Sector";
 
-const sec: string = "Google Cloud Platform";
+const sec: string = "GCP";
 const lev: level = { point: 1, basis: "Toy." };
 const specs: spec[] = [
   {
