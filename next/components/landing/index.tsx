@@ -8,7 +8,7 @@ const Landing = () => {
     <>
       <div className="landing">
         <Cover />
-        <Arrow.down href={"/intro"} as={"/intro"} />
+        <Arrow.down href={"/intro"} as={"/intro"} isScrollable={false} />
         <Owner />
       </div>
     </>

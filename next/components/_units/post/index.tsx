@@ -11,6 +11,7 @@ type props = {
   isNeedToOffset?: boolean;
   arrow_href?: string;
   arrow_as?: string;
+  isScrollable?: boolean;
 };
 
 const cls = "post";
@@ -21,6 +22,7 @@ const Post = ({
   isNeedToOffset = false,
   arrow_href,
   arrow_as,
+  isScrollable,
 }: props) => {
   return (
     <div className={cls}>
@@ -32,7 +34,13 @@ const Post = ({
       >
         {generatedContents}
       </div>
-      {arrow_href && arrow_as && <Arrow.down href={arrow_href} as={arrow_as} />}
+      {arrow_href && arrow_as && (
+        <Arrow.down
+          href={arrow_href}
+          as={arrow_as}
+          isScrollable={isScrollable}
+        />
+      )}
     </div>
   );
 };

@@ -2,14 +2,28 @@
   align-self: center;
   padding-top: 3.5rem;
 
-  .fixed {
+  &.fixed {
     position: absolute;
     bottom: -215%;
   }
 
-  .isDraggable {}
-
   &>a {
     text-decoration: none;
+  }
+
+  &__down {
+    rotate: 0;
+  }
+
+  &__left {
+    rotate: 90;
+  }
+
+  &__up {
+    rotate: 180;
+  }
+
+  &__right {
+    rotate: 270;
   }
 }
