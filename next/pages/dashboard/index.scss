@@ -96,6 +96,19 @@
         font-size: 0.85rem;
       }
     }
+  }
 
+}
+
+.icon-src {
+  color: darkgrey;
+  opacity: 0.45;
+  font-size: 0.85rem;
+  padding: 1rem;
+
+  &>a {
+    font-weight: bold;
+    color: darkgrey;
+    text-decoration: none;
   }
 }

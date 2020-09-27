@@ -35,6 +35,7 @@ const makeTechStacks = () => {
     <div className={`${cls}-wrapper`}>
       {makeDoughnutDashboard()}
       {makeSimpleInfo()}
+      {makeIconSrc()}
     </div>
   );
 };
@@ -61,7 +62,7 @@ const makeDoughnutDashboard = () => {
 
 const makeTechPart = (techs: tech[], side: string) => {
   return techs.map(({ title, stacks, link }: tech, index: number) => (
-    <Link href={link} as={link}>
+    <Link key={index} href={link} as={link}>
       <a key={index} className={`${cls}__contents ${side}-part`}>
         <h3>{title}</h3>
         {stacks.map((stack: string, idx: number) => (
@@ -76,8 +77,8 @@ const makeSimpleInfo = () => {
   const subcls = "simple-info";
   return (
     <div className={subcls}>
-      {simpleInfo.map(({ imgUrl, title, content }: info) => (
-        <div className={`${subcls}__box`}>
+      {simpleInfo.map(({ imgUrl, title, content }: info, index: number) => (
+        <div key={index} className={`${subcls}__box`}>
           <img src={`/static/images/icons/${imgUrl}`} />
           <div className={`${subcls}__box-info`}>
             <p>{title}</p>
@@ -85,6 +86,27 @@ const makeSimpleInfo = () => {
           </div>
         </div>
       ))}
+    </div>
+  );
+};
+
+const makeIconSrc = () => {
+  const subcls = "icon-src";
+  return (
+    <div className={subcls}>
+      icon designed by '
+      <a
+        target="_blank"
+        href="https://www.flaticon.com/kr/authors/chanut"
+        title="Chanut"
+      >
+        Chanut
+      </a>
+      ' served from '
+      <a target="_blank" href="https://www.flaticon.com/kr/" title="Flaticon">
+        www.flaticon.com
+      </a>
+      '
     </div>
   );
 };

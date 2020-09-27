@@ -16,8 +16,8 @@ type props = {
 };
 
 const OneBodyLayout = ({
-  isVisableLogo,
-  isVisableFooter,
+  isVisableLogo = true,
+  isVisableFooter = true,
   title,
   oneBodyComponent,
   isScrollable = false,
