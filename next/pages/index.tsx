@@ -6,14 +6,30 @@ import Landing from "@/components/landing";
 
 const Index = () => {
   return (
-    <a href="/intro">
-      <Layouts.OneBody
-        isVisableLogo={false}
-        isVisableFooter={false}
-        oneBodyComponent={<Landing />}
-        isDraggable={false}
-      />
-    </a>
+    <>
+      <div className="intro-wrapper">
+        <a href="/intro"></a>
+        <Layouts.OneBody
+          isVisableLogo={false}
+          isVisableFooter={false}
+          oneBodyComponent={<Landing />}
+        />
+      </div>
+
+      <style jsx>{`
+        /* yarn add @zeit/next-sass node-sass */
+        .intro-wrapper {
+          margin-top: 3.5rem;
+        }
+        .intro-wrapper > a {
+          width: 100vw;
+          height: 100vh;
+          display: block;
+          position: fixed;
+          z-index: 99;
+        }
+      `}</style>
+    </>
   );
 };
 

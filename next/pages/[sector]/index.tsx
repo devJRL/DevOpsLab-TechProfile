@@ -1,20 +1,17 @@
-import { NextPage } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
+import { NextPage, NextPageContext } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
 import { ReactNode } from "react";
 
-import "@/public/_global.scss";
 import "./index.scss";
 import Layouts from "@/components/_layouts/";
 import Post from "@/components/_units/post";
+import Arrows from "@/components/_units/arrow";
 
-import Sector, {
-  level,
-  spec,
-  dummySector,
-} from "@/scaffoldings/sectors/Sector";
+// TODO: Transfer with REST API
+import Sector, { level, spec } from "@/scaffoldings/sectors/Sector";
 import {
   cloud,
   database,
-  dev_env,
+  devops,
   web_back,
   web_front,
 } from "@/scaffoldings/sectors";
@@ -22,6 +19,54 @@ import {
 type props = {
   selectedSector: string;
   sectorArray: Sector[];
+  prevLink?: string;
+  nextLink?: string;
+  prevTarget?: string;
+  nextTarget?: string;
+};
+
+const SectorPage: NextPage<any> = ({
+  selectedSector,
+  sectorArray,
+  prevLink = "/dashboard",
+  nextLink = prevLink,
+  prevTarget = "Dashboard",
+  nextTarget = prevTarget,
+}: props) => {
+  const cls = "linked-arrow";
+  const isNeedToOffset = sectorArray && sectorArray.length > 2;
+  return (
+    <>
+      <div className={`${cls} left`}>
+        <div className={`${cls}__flexbox`}>
+          <a className={`${cls}__flexbox-button`} href={prevLink}>
+            <p>Next Page</p>
+            <span>{prevTarget}</span>
+          </a>
+          <Arrows.Left href={prevLink} as={prevLink} />
+        </div>
+      </div>
+      <Layouts.OneBody
+        oneBodyComponent={
+          <Post
+            title={selectedSector}
+            generatedContents={makeContents(sectorArray)}
+            isNeedToOffset={isNeedToOffset}
+          />
+        }
+        isScrollable={true}
+      />
+      <div className={`${cls} right`}>
+        <div className={`${cls}__flexbox`}>
+          <a className={`${cls}__flexbox-button`} href={nextLink}>
+            <p>Next Page</p>
+            <span>{nextTarget}</span>
+          </a>
+          <Arrows.Right href={nextLink} as={nextLink} />
+        </div>
+      </div>
+    </>
+  );
 };
 
 const cls = "sector";
@@ -31,20 +76,14 @@ const makeContents = (sectorArray: Sector[]): ReactNode => {
   return (
     <table className={cls}>
       <tbody>
-        {sectorArray.map((sectorData: Sector, index: number) =>
-          makeSectorLow(sectorData, index)
-        )}
+        {sectorArray.map((sectorData: Sector, index: number) => (
+          <tr key={index}>
+            {makeLeftMetaPart(sectorData.sector, sectorData.level)}
+            {makeRightDetailPart(sectorData.specs)}
+          </tr>
+        ))}
       </tbody>
     </table>
-  );
-};
-
-const makeSectorLow = (sectorData: Sector, index: number) => {
-  return (
-    <tr key={index}>
-      {makeLeftMetaPart(sectorData.sector, sectorData.level)}
-      {makeRightDetailPart(sectorData.specs)}
-    </tr>
   );
 };
 
@@ -98,49 +137,69 @@ const makeRightDetailPart = (specs: spec[]) => {
   );
 };
 
-const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
-  return (
-    <Layouts.OneBody
-      oneBodyComponent={
-        <Post
-          title={selectedSector}
-          generatedContents={makeContents(sectorArray)}
-        />
-      }
-      isDraggable={true}
-    />
-  );
-};
+SectorPage.getInitialProps = async (ctx: NextPageContext) => {
+  const { query } = ctx;
+  switch (query.sector || "dashboard") {
+    case "devops":
+      return {
+        selectedSector: "DevOps",
+        sectorArray: devops.list,
+        prevLink: "/dashboard",
+        nextLink: "/cloud",
+        prevTarget: "Dashboard",
+        nextTarget: "Cloud Computing",
+      };
 
-SectorPage.getInitialProps = async ({ query }) => {
-  let selectedSector = query.sector || "dashboard";
-  let sectorArray: Sector[];
-  switch (selectedSector) {
     case "cloud":
-      sectorArray = cloud.list;
-      break;
-    case "database":
-      sectorArray = database.list;
-      break;
-    case "dev-env":
-      sectorArray = dev_env.list;
-      break;
-    case "web-back":
-      sectorArray = web_back.list;
-      break;
-    case "web-front":
-      sectorArray = web_front.list;
-      break;
-    default:
-      // # FIXME : redirect to dashboard
-      selectedSector = "Undefined Sector";
-      sectorArray = [dummySector, dummySector, dummySector];
-  }
+      return {
+        selectedSector: "Cloud Computing",
+        sectorArray: cloud.list,
+        prevLink: "/devops",
+        nextLink: "/full-stack",
+        prevTarget: "DevOps",
+        nextTarget: "Full-Stack",
+      };
 
-  return {
-    selectedSector: selectedSector,
-    sectorArray: sectorArray,
-  };
+    case "full-stack":
+    case "back-end":
+      return {
+        selectedSector: "Back-end",
+        sectorArray: web_back.list,
+        prevLink: "/cloud",
+        nextLink: "/front-end",
+        prevTarget: "Cloud Computing",
+        nextTarget: "Front-end",
+      };
+
+    case "front-end":
+      return {
+        selectedSector: "Front-end",
+        sectorArray: web_front.list,
+        prevLink: "/back-end",
+        nextLink: "/database",
+        prevTarget: "Back-end",
+        nextTarget: "Database",
+      };
+
+    case "database":
+      return {
+        selectedSector: "Database",
+        sectorArray: database.list,
+        prevLink: "/back-end",
+        nextLink: "/dashboard",
+        prevTarget: "Back-end",
+        nextTarget: "Intro",
+      };
+
+    default:
+      // Redirection on Server Side
+      // REF | https://dev.to/justincy/client-side-and-server-side-redirection-in-next-js-3ile
+      if (ctx.res) {
+        ctx.res.writeHead(302, { Location: "/dashboard" });
+        ctx.res.end();
+      }
+      return {};
+  }
 };
 
 export default SectorPage;

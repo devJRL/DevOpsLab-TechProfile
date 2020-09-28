@@ -5,6 +5,25 @@ import { Contents, Image, postJson } from "@/components/_units/post/_PostSet";
 import Layouts from "@/components/_layouts/";
 import Post from "@/components/_units/post";
 
+type props = {
+  postData: postJson;
+};
+
+const IntroPage = ({ postData }: props) => {
+  return (
+    <Layouts.OneBody
+      oneBodyComponent={
+        <Post
+          title={postData.title}
+          generatedContents={makeContents(postData.contents)}
+          arrow_href="/dashboard"
+          arrow_as="/dashboard"
+        />
+      }
+    />
+  );
+};
+
 const cls = "intro-content";
 
 const makeContents = (contents: Contents): ReactNode => {
@@ -52,26 +71,6 @@ const makeImage = (images: Image[]) => {
         <img key={index} src={img.src} alt={img.alt} />
       ))}
     </div>
-  );
-};
-
-type props = {
-  postData: postJson;
-};
-
-const IntroPage = ({ postData }: props) => {
-  return (
-    <Layouts.OneBody
-      oneBodyComponent={
-        <Post
-          title={postData.title}
-          generatedContents={makeContents(postData.contents)}
-          arrow_href="/dashboard"
-          arrow_as="/dashboard"
-        />
-      }
-      isDraggable={false}
-    />
   );
 };
 

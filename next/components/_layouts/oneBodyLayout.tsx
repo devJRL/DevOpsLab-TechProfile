@@ -12,22 +12,24 @@ type props = {
   isVisableFooter?: boolean;
   title?: string;
   oneBodyComponent?: ReactNode;
-  isDraggable?: boolean;
+  isScrollable?: boolean;
 };
 
 const OneBodyLayout = ({
-  isVisableLogo,
-  isVisableFooter,
+  isVisableLogo = true,
+  isVisableFooter = true,
   title,
   oneBodyComponent,
-  isDraggable,
+  isScrollable = false,
 }: props) => {
   return (
     <>
       <Title title={title} />
       <Header isVisableLogo={isVisableLogo} />
       <div
-        className={`oneBodyComponent is_${isDraggable ? `draggable` : `fixed`}`}
+        className={`oneBodyComponent is__${
+          isScrollable ? `scrollable` : `fixed`
+        }`}
       >
         {oneBodyComponent}
       </div>
