@@ -21,7 +21,6 @@ const DashboardPage: NextPage<any> = () => {
           title={"Tech-Stacks"}
           generatedContents={makeTechStacks()}
           arrow_href="/devops"
-          arrow_as="/devops"
         />
       }
     />
@@ -49,10 +48,10 @@ const makeDoughnutDashboard = () => {
           labels: [
             techRight[0].title,
             techRight[1].title,
-            techLeft[0].title,
             techLeft[1].title,
+            techLeft[0].title,
           ],
-          datas: [25, 25, 25, 25],
+          datas: [100, 100, 100, 100],
         })}
       </div>
       <div className={`${cls}__side`}>{makeTechPart(techRight, "right")}</div>

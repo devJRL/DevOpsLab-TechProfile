@@ -1,17 +1,15 @@
-import Link from "next/link";
-
 import "./index.scss";
 
 type props = {
   href: string;
-  as: string;
+  as?: string;
   isScrollable?: boolean;
   rotateDegree?: number;
 };
 
 const makeArrow = (
   arrowImg: string = "arrow-down.svg",
-  { href, as, isScrollable = true, rotateDegree = 0 }: props
+  { href, isScrollable = true, rotateDegree = 0 }: props
 ) => {
   const degree = rotateDegree % 360;
 
@@ -24,16 +22,12 @@ const makeArrow = (
 
   const cls = "arrow";
   return (
-    <div className={`${cls} ${!isScrollable && "fixed"}`}>
-      <Link href={href} as={as}>
-        <a>
-          <img
-            className={`${cls}__${direction}`}
-            src={`/static/images/etc-parts/${arrowImg}`}
-          />
-        </a>
-      </Link>
-    </div>
+    <a className={`${cls} ${!isScrollable && "fixed"}`} href={href}>
+      <img
+        className={`${cls}__${direction}`}
+        src={`/static/images/etc-parts/${arrowImg}`}
+      />
+    </a>
   );
 };
 

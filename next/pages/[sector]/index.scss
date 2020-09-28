@@ -1,6 +1,74 @@
 @import "../../public/_declare_fonts.scss";
 @import "../../public/declare_colors";
 
+.linked-arrow {
+  display: block;
+  width: 15%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+
+  &:hover {
+    background-color: $Color-G01-M;
+    transition: 1.75s;
+  }
+
+  &__flexbox {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    position: relative;
+
+    &-button {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      text-decoration: none;
+
+      &>p {
+        color: $Color-G01-B;
+        font-size: 1.15rem;
+        padding-bottom: 2rem;
+
+        &:hover {
+          color: $Color-G01-SL;
+          transition: 1s;
+        }
+      }
+
+      &>span {
+        color: $Color-G01-B;
+        font-weight: bold;
+        font-size: 1.15rem;
+        padding-bottom: 6rem;
+
+        &:hover {
+          color: $Color-G01-S;
+          transition: 1s;
+        }
+      }
+
+      &>a {
+        padding-bottom: 3rem;
+      }
+    }
+  }
+
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
+}
+
 .sector {
   font-family: Roboto;
   margin: 0;

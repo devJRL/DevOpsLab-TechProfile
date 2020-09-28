@@ -1,7 +1,6 @@
 import { NextPage, NextPageContext } from "next"; // https://linguinecode.com/post/next-js-typescript-getinitialprops
 import { ReactNode } from "react";
 
-import "@/public/_global.scss";
 import "./index.scss";
 import Layouts from "@/components/_layouts/";
 import Post from "@/components/_units/post";
@@ -30,19 +29,22 @@ const SectorPage: NextPage<any> = ({
   selectedSector,
   sectorArray,
   prevLink = "/dashboard",
-  nextLink = "/dashboard",
+  nextLink = prevLink,
   prevTarget = "Dashboard",
-  nextTarget = "Dashboard",
+  nextTarget = prevTarget,
 }: props) => {
   const cls = "linked-arrow";
   const isNeedToOffset = sectorArray && sectorArray.length > 2;
   return (
     <>
       <div className={`${cls} left`}>
-        <a className={`${cls}__flexbox`} href={prevLink}>
-          <span>{prevTarget}</span>
+        <div className={`${cls}__flexbox`}>
+          <a className={`${cls}__flexbox-button`} href={prevLink}>
+            <p>Next Page</p>
+            <span>{prevTarget}</span>
+          </a>
           <Arrows.Left href={prevLink} as={prevLink} />
-        </a>
+        </div>
       </div>
       <Layouts.OneBody
         oneBodyComponent={
@@ -55,10 +57,13 @@ const SectorPage: NextPage<any> = ({
         isScrollable={true}
       />
       <div className={`${cls} right`}>
-        <a className={`${cls}__flexbox`} href={nextLink}>
-          <span>{nextTarget}</span>
+        <div className={`${cls}__flexbox`}>
+          <a className={`${cls}__flexbox-button`} href={nextLink}>
+            <p>Next Page</p>
+            <span>{nextTarget}</span>
+          </a>
           <Arrows.Right href={nextLink} as={nextLink} />
-        </a>
+        </div>
       </div>
     </>
   );
@@ -139,31 +144,51 @@ SectorPage.getInitialProps = async (ctx: NextPageContext) => {
       return {
         selectedSector: "DevOps",
         sectorArray: devops.list,
+        prevLink: "/dashboard",
+        nextLink: "/cloud",
+        prevTarget: "Dashboard",
+        nextTarget: "Cloud Computing",
       };
 
     case "cloud":
       return {
         selectedSector: "Cloud Computing",
         sectorArray: cloud.list,
+        prevLink: "/devops",
+        nextLink: "/full-stack",
+        prevTarget: "DevOps",
+        nextTarget: "Full-Stack",
       };
 
     case "full-stack":
-    case "web-back":
+    case "back-end":
       return {
         selectedSector: "Back-end",
         sectorArray: web_back.list,
+        prevLink: "/cloud",
+        nextLink: "/front-end",
+        prevTarget: "Cloud Computing",
+        nextTarget: "Front-end",
       };
 
-    case "web-front":
+    case "front-end":
       return {
         selectedSector: "Front-end",
         sectorArray: web_front.list,
+        prevLink: "/back-end",
+        nextLink: "/database",
+        prevTarget: "Back-end",
+        nextTarget: "Database",
       };
 
     case "database":
       return {
         selectedSector: "Database",
         sectorArray: database.list,
+        prevLink: "/back-end",
+        nextLink: "/dashboard",
+        prevTarget: "Back-end",
+        nextTarget: "Intro",
       };
 
     default:
