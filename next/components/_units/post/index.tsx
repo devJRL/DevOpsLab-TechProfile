@@ -35,7 +35,7 @@ const Post = ({
         {generatedContents}
       </div>
       {arrow_href && arrow_as && (
-        <Arrow.down
+        <Arrow.Down
           href={arrow_href}
           as={arrow_as}
           isScrollable={isScrollable}

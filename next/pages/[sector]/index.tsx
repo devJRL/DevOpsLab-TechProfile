@@ -5,7 +5,9 @@ import "@/public/_global.scss";
 import "./index.scss";
 import Layouts from "@/components/_layouts/";
 import Post from "@/components/_units/post";
+import Arrows from "@/components/_units/arrow";
 
+// TODO: Transfer with REST API
 import Sector, { level, spec } from "@/scaffoldings/sectors/Sector";
 import {
   cloud,
@@ -18,12 +20,30 @@ import {
 type props = {
   selectedSector: string;
   sectorArray: Sector[];
+  prevLink?: string;
+  nextLink?: string;
+  prevTarget?: string;
+  nextTarget?: string;
 };
 
-const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
+const SectorPage: NextPage<any> = ({
+  selectedSector,
+  sectorArray,
+  prevLink = "/dashboard",
+  nextLink = "/dashboard",
+  prevTarget = "Dashboard",
+  nextTarget = "Dashboard",
+}: props) => {
+  const cls = "linked-arrow";
   const isNeedToOffset = sectorArray && sectorArray.length > 2;
   return (
     <>
+      <div className={`${cls} left`}>
+        <a className={`${cls}__flexbox`} href={prevLink}>
+          <span>{prevTarget}</span>
+          <Arrows.Left href={prevLink} as={prevLink} />
+        </a>
+      </div>
       <Layouts.OneBody
         oneBodyComponent={
           <Post
@@ -34,6 +54,12 @@ const SectorPage: NextPage<any> = ({ selectedSector, sectorArray }: props) => {
         }
         isScrollable={true}
       />
+      <div className={`${cls} right`}>
+        <a className={`${cls}__flexbox`} href={nextLink}>
+          <span>{nextTarget}</span>
+          <Arrows.Right href={nextLink} as={nextLink} />
+        </a>
+      </div>
     </>
   );
 };
@@ -109,22 +135,23 @@ const makeRightDetailPart = (specs: spec[]) => {
 SectorPage.getInitialProps = async (ctx: NextPageContext) => {
   const { query } = ctx;
   switch (query.sector || "dashboard") {
+    case "devops":
+      return {
+        selectedSector: "DevOps",
+        sectorArray: devops.list,
+      };
+
     case "cloud":
       return {
         selectedSector: "Cloud Computing",
         sectorArray: cloud.list,
       };
 
-    case "database":
+    case "full-stack":
+    case "web-back":
       return {
-        selectedSector: "Database",
-        sectorArray: database.list,
-      };
-
-    case "devops":
-      return {
-        selectedSector: "DevOps",
-        sectorArray: devops.list,
+        selectedSector: "Back-end",
+        sectorArray: web_back.list,
       };
 
     case "web-front":
@@ -133,11 +160,10 @@ SectorPage.getInitialProps = async (ctx: NextPageContext) => {
         sectorArray: web_front.list,
       };
 
-    case "full-stack":
-    case "web-back":
+    case "database":
       return {
-        selectedSector: "Back-end",
-        sectorArray: web_back.list,
+        selectedSector: "Database",
+        sectorArray: database.list,
       };
 
     default:

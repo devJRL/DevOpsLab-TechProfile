@@ -54,10 +54,10 @@ const ArrowRight = (args: props) => {
 };
 
 const Arrow = {
-  down: ArrowDown,
-  left: ArrowLeft,
-  up: ArrowUp,
-  right: ArrowRight,
+  Down: ArrowDown,
+  Left: ArrowLeft,
+  Up: ArrowUp,
+  Right: ArrowRight,
 };
 
 export default Arrow;

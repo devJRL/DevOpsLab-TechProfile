@@ -12,18 +12,18 @@
   }
 
   &__down {
-    rotate: 0;
+    transform: rotate(0deg);
   }
 
   &__left {
-    rotate: 90;
+    transform: rotate(90deg);
   }
 
   &__up {
-    rotate: 180;
+    transform: rotate(180deg);
   }
 
   &__right {
-    rotate: 270;
+    transform: rotate(270deg);
   }
 }

@@ -9,7 +9,7 @@
 
 .dashboard {
   width: 100%;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 
   display: flex;
   justify-content: space-between;
@@ -61,10 +61,10 @@
 
 .simple-info {
   width: 100%;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin: 1.5rem 0;
 
   &__box {
     width: auto;
@@ -104,7 +104,6 @@
   color: darkgrey;
   opacity: 0.45;
   font-size: 0.85rem;
-  padding: 1rem;
 
   &>a {
     font-weight: bold;
