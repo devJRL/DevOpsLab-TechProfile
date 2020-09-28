@@ -8,8 +8,8 @@ const specs: spec[] = [
     relations: [
       "Merge & Rebase for master branch (production)",
       "Resolve bug branches and Blame cause commit",
-      "Migration from SVN to CodeCommit (AWS Git Repository Service)",
-      "Install & Operate tech blog on Jekyll 4.0 in the private server",
+      "Migration from SVN to CodeCommit",
+      "Install & Operate tech-blog on Jekyll-4.0 in private",
       "Git Flow",
     ],
   },
